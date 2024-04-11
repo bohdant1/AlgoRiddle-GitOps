@@ -1,4 +1,5 @@
 # Create cluster
+
 k3d registry create algoriddle --port 5001
 k3d cluster create algoriddle \
     --servers 1 \
@@ -6,13 +7,18 @@ k3d cluster create algoriddle \
     --port 9080:80@loadbalancer \
     --registry-use algoriddle:5001 \
     --volume $HOME/Documents/Proj/AlgoRiddleK8SManifest/voldata:/var/lib/rancher/k3s/storage@all
+
 # Tag and push images
+
 docker tag algoriddlebackendapi:v0.1 localhost:5001/algoriddlebackendapi:v0.1
 docker tag algoriddlewebui:v0.1 localhost:5001/algoriddlewebui:v0.1
 docker push localhost:5001/algoriddlebackendapi:v0.1
 docker push localhost:5001/algoriddlewebui:v0.1
 
+## Create develop namespace and add secrets
+
 kubectl create namespace develop
+kubectl create -f algoriddle-kustomize/backendapi/secrets.yaml -n develop
 
 # Add ArgoCD
 
