@@ -12,6 +12,8 @@ docker tag algoriddlewebui:v0.1 localhost:5001/algoriddlewebui:v0.1
 docker push localhost:5001/algoriddlebackendapi:v0.1
 docker push localhost:5001/algoriddlewebui:v0.1
 
+kubectl create namespace develop
+
 # Add ArgoCD
 
 kubectl create namespace argocd

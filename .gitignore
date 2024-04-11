@@ -2,3 +2,5 @@ voldata/
 argopwd.txt
 algoriddle-helm/templates/backendapi/secrets.yaml
 algoriddle-kustomize/backendapi/secrets.yaml
+algoriddle-helm/templates/voldata
+algoriddle-kustomize/voldata
