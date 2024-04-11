@@ -1,0 +1,4 @@
+resources:
+  - ./backendapi
+  - ./postgresql
+  - ./webui

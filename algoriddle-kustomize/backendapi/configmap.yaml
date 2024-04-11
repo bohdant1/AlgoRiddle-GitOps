@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: algoriddle-config
+data:
+  SPRING_DATASOURCE_HIKARI_CONNECTIONTIMEOUT: "20000"
+  SPRING_DATASOURCE_HIKARI_MAXIMUMPOOLSIZE: "5"
+  SPRING_JPA_HIBERNATE_DDL_AUTO: "create-drop"
+  SPRING_JMS_SERVICEBUS_PRICING_TIER: "standard"
+  SPRING_JMS_LISTENER_RECEIVE_TIMEOUT: "60000"
+  SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-service.develop.svc.cluster.local:5432/algoriddledb

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: algoriddlewebui
+  labels:
+    app: algoriddlewebui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: algoriddlewebui
+  template:
+    metadata:
+      labels:
+        app: algoriddlewebui
+    spec:
+      containers:
+      - name: api
+        image: k3d-algoriddle:5000/algoriddlewebui:v0.1
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "1"

@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: algoriddlewebui-ingress
+spec:
+  rules:
+  - host: algoriddlewebui.localhost
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: algoriddlewebui-service
+            port:
+              number: 4200
