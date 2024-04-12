@@ -4,6 +4,8 @@ k3d registry create algoriddle --port 5001
 k3d cluster create algoriddle \
     --servers 1 \
     --agents 1 \
+    --agents-memory 8G \
+    --servers-memory 8G \
     --port 9080:80@loadbalancer \
     --registry-use algoriddle:5001 \
     --volume $HOME/Documents/Proj/AlgoRiddleK8SManifest/voldata:/var/lib/rancher/k3s/storage@all
