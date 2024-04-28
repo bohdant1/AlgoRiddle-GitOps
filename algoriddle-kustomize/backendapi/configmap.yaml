@@ -8,4 +8,4 @@ data:
   SPRING_JPA_HIBERNATE_DDL_AUTO: "create-drop"
   SPRING_JMS_SERVICEBUS_PRICING_TIER: "standard"
   SPRING_JMS_LISTENER_RECEIVE_TIMEOUT: "60000"
-  SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-service.develop.svc.cluster.local:5432/algoriddledb
+  SPRING_DATASOURCE_URL: jdbc:postgresql://algoriddledbserver.postgres.database.azure.com/algoriddledb

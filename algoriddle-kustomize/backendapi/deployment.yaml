@@ -5,7 +5,7 @@ metadata:
   labels:
     app: algoriddlebackendapi
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: algoriddlebackendapi
@@ -14,9 +14,11 @@ spec:
       labels:
         app: algoriddlebackendapi
     spec:
+      imagePullSecrets:
+      - name: dockerhub-secret
       containers:
       - name: api
-        image: k3d-algoriddle:5000/algoriddlebackendapi:v0.1
+        image: btymo/privatealgoriddlebackendapi:v0.0.1
         ports:
         - containerPort: 8080
         resources:

@@ -15,8 +15,8 @@ spec:
         app: algoriddlewebui
     spec:
       containers:
-      - name: api
-        image: k3d-algoriddle:5000/algoriddlewebui:v0.1
+      - name: web-ui
+        image: btymo/algoriddlewebui:v0.1
         ports:
         - containerPort: 80
         resources:

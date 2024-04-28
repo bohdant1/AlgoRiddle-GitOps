@@ -12,26 +12,32 @@ k3d cluster create algoriddle \
 
 # Tag and push images
 
-docker tag algoriddlebackendapi:v0.1 localhost:5001/algoriddlebackendapi:v0.1
-docker tag algoriddlewebui:v0.1 localhost:5001/algoriddlewebui:v0.1
-docker push localhost:5001/algoriddlebackendapi:v0.1
-docker push localhost:5001/algoriddlewebui:v0.1
+# docker tag algoriddlebackendapi:v0.1 localhost:5001/algoriddlebackendapi:v0.1
+# docker tag algoriddlewebui:v0.1 localhost:5001/algoriddlewebui:v0.1
+# docker push localhost:5001/algoriddlebackendapi:v0.1
+# docker push localhost:5001/algoriddlewebui:v0.1
 
 ## Create develop namespace and add secrets
 
 kubectl create namespace develop
 kubectl create -f algoriddle-kustomize/backendapi/secrets.yaml -n develop
 
-# Add ArgoCD
+kubectl create secret docker-registry dockerhub-secret \
+--docker-server=docker.io \
+--docker-username=btymo \
+--docker-password=$DOCKER_PWD \
+--docker-email=none \
+-n develop
 
-kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-sleep 120
-argocd admin initial-password -n argocd > argopwd.txt
+# # Add ArgoCD
 
-# # Apply manifest with kustomize
-# kubectl create namespace develop
-# kubectl apply -k ./algoriddle-kustomize -n develop
+# kubectl create namespace argocd
+# kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+# sleep 120
+# argocd admin initial-password -n argocd > argopwd.txt
+
+# Apply manifest with kustomize
+kubectl apply -k ./algoriddle-kustomize -n develop
 
 # # Apply with helm
 # kubectl create namespace develop
